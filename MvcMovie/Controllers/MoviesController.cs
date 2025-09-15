@@ -20,19 +20,33 @@ namespace MvcMovie.Controllers
         }
 
 
-        public async Task<IActionResult> Index(string id)
+        public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
             if (_context.Movie != null)
             {
                 return Problem("Entity set 'MvcMovieContext.Movie' is null.");
             }
+
+            IQueryable<string> genreQuery = from m in _context.Movie
+                                            orderby m.Genre
+                                            select m.Genre;
        
             var movies = from m in _context.Movie select m;
        
-            if (!String.IsNullOrEmpty(id))
+            if (!string.IsNullOrEmpty(searchString))
             {
-                movies = movies.Where(s => s.Title!.ToUpper().Contains(id.ToUpper()));
+                movies = movies.Where(s => s.Title!.ToUpper().Contains(searchString.ToUpper()));
             }
+
+            if (!string.IsNullOrEmpty(movieGenre)) {
+                movies = movies.Where(x => x.Genre == movieGenre);
+            }
+
+            var movieGenreVM = new MovieGenreViewModel
+            {
+                  Genres = new SelectList(await genreQuery.Distinct().ToListAsync())
+                , Movies = await movies.ToListAsync()
+            };
        
             return View(await movies.ToListAsync());
         }
@@ -66,7 +80,7 @@ namespace MvcMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +112,7 @@ namespace MvcMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
             if (id != movie.Id)
             {
