@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Data;
 using MvcMovie.Models;
+using MvcMovie.Helpers;
 
 namespace MvcMovie.Controllers
 {
     public class MoviesController : Controller
     {
         private readonly MvcMovieContext _context;
+        private readonly ILogger<MoviesController> _logger;
 
-        public MoviesController(MvcMovieContext context)
+
+        public MoviesController(MvcMovieContext context, ILogger<MoviesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
 
@@ -24,6 +28,7 @@ namespace MvcMovie.Controllers
         {
             if (_context.Movie != null)
             {
+                _logger.Error(new NullReferenceException(), "Move in context is null");
                 return Problem("Entity set 'MvcMovieContext.Movie' is null.");
             }
 

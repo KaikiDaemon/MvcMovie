@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Razor.Language.Intermediate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using MvcMovie.Data;
 using System;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace MvcMovie.Models
             {
                 // look for any movies
                 if (context.Movie.Any())
-                {
+                { 
                     return; // DB has been seeded
                 }
 
