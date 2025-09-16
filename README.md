@@ -1,0 +1,3 @@
+I had issues with this assignment as following the tortoral left me with it broken, even going back through it i cant identify any point where i strayed from the tortoral's instructions. Leaving me to beleave something happened localy or that in the many revisions I saw since when I first started this something got changed that messed me up. I intend to spend some time trying to fix this still, however I suspect I would need to restart entirly, and I'm too far behind as it is to justify doing that at this moment. I had initaly planned to work with my professor to resolve this, but have struggled to actualy arrange this.
+
+Any input as to what went wrong would be apreciated.
