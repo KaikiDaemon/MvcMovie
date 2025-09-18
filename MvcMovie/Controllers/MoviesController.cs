@@ -26,7 +26,7 @@ namespace MvcMovie.Controllers
 
         public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
-            if (_context.Movie != null)
+            if (_context.Movie == null)
             {
                 _logger.Error(new NullReferenceException(), "Move in context is null");
                 return Problem("Entity set 'MvcMovieContext.Movie' is null.");
@@ -35,7 +35,7 @@ namespace MvcMovie.Controllers
             IQueryable<string> genreQuery = from m in _context.Movie
                                             orderby m.Genre
                                             select m.Genre;
-       
+
             var movies = from m in _context.Movie select m;
        
             if (!string.IsNullOrEmpty(searchString))
@@ -53,7 +53,7 @@ namespace MvcMovie.Controllers
                 , Movies = await movies.ToListAsync()
             };
        
-            return View(await movies.ToListAsync());
+            return View(movieGenreVM);
         }
 
         // GET: Movies/Details/5
