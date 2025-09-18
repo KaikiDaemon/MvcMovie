@@ -1,3 +1,13 @@
-I had issues with this assignment as following the tortoral left me with it broken, even going back through it i cant identify any point where i strayed from the tortoral's instructions. Leaving me to beleave something happened localy or that in the many revisions I saw since when I first started this something got changed that messed me up. I intend to spend some time trying to fix this still, however I suspect I would need to restart entirly, and I'm too far behind as it is to justify doing that at this moment. I had initaly planned to work with my professor to resolve this, but have struggled to actualy arrange this.
+I had issues with this assignment but thanks to your input its now working.
 
-Any input as to what went wrong would be apreciated.
+# /Movies 
+## The starting movies view with all genre and no search.
+<img width="1920" height="1081" alt="image" src="https://github.com/user-attachments/assets/959cfc32-b998-4187-85bc-01b046656bf5" />
+
+# Genre: Comedy
+## The movies view sorted by Comedy genre and no search.
+<img width="1921" height="1081" alt="image" src="https://github.com/user-attachments/assets/e149baa1-2610-49ee-aa8b-cd3630857ada" />
+
+# Search: ghost
+## The movies view with the search 'ghost'.
+<img width="1921" height="1081" alt="image" src="https://github.com/user-attachments/assets/fdf0cb70-6186-4b7c-a681-129e93bf8261" />
